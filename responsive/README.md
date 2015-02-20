@@ -11,4 +11,7 @@ At the moment, The images do not actually appear. I use a background
 attribute  to display the image and include a URL to software.png and then
 specify the pixel  coordinate I would like to start displaying from. I then
 specify a height and width that the image should display. However, for reasons
-that I cannot yet infer,  this method doesn't seem to be displaying an image.
+that I cannot yet infer, this method doesn't seem to be displaying an image.
+
+I've tried putting the image url in quotes and I've tried modifying the format 
+of how what pixel coordinates to start at.
