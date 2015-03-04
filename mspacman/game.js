@@ -5,13 +5,7 @@
  *
  */
 
-function draw_arena(context, arena)
-{
 
-	context.drawImage(arena, 315, 0 /*465, 120, 10, 10, 465, 120*/); 
- 	
-}
- 
 function init() 
 {
 
@@ -19,10 +13,12 @@ function init()
  	var context = pac_man_canvas.getContext('2d');
 
  	var arena = new Image();
- 
- 	arena.addEventListener("onload", draw_arena(context, arena), false);
-	arena.src = 'pacman10-hp-sprite.png';
+ 	arena.src = 'pacman10-hp-sprite.png';
 
+ 	arena.onLoad = function(){
+
+ 		context.drawImage(arena.src, 315, 0, 465, 120, 10, 10, 465, 120); 
+	};
  	
 }
 
