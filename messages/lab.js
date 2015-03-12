@@ -10,7 +10,7 @@
  		//var infoFeed = document.getElementById('messages');
 
  		request = new XMLHttpRequest();
- 		request.open("GET", "https://github.com/tuftsdev/comp20-nsempere/blob/gh-pages/messages/data.json", true);
+ 		request.open("GET", "data.json", true);
  		request.onreadystatechange = post_data();
  		request.send();
 
