@@ -11,7 +11,7 @@
 
  		request = new XMLHttpRequest();
  		request.open("GET", "data.json", true);
- 		request.onreadystatechange = post_data();
+ 		request.onreadystatechange = post_data;
  		request.send();
 
 
