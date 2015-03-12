@@ -15,11 +15,11 @@ function findMyLocation()
 			var pos = "login=" + login + 
 					  "&lat=" + position.coords.latitude + 
 					  "&lng" + position.coords.longitude;
-			console.log(pos);
+			document.getElementById("test").innerHTML = "<p>" + pos + "</pos>";
 		}
 }
 
-function sendMyLocation()
+/*function sendMyLocation()
 {
 
 	xml = new XMLHttpRequest();
@@ -34,4 +34,4 @@ function writeMap()
 		sendMyLocation();
 
 
-}
+}*/
