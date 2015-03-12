@@ -7,17 +7,17 @@
 
  function parse() {
 
- 		var infoFeed = document.getElementById('messages');
+ 		//var infoFeed = document.getElementById('messages');
 
  		request = new XMLHttpRequest();
  		request.open("GET", "data.json", true);
- 		request.onreadystatechange = post_data(infoFeed);
+ 		request.onreadystatechange = post_data();
  		request.send();
 
 
  }
 
- function post_data(output) 
+ function post_data() 
  {
 
  		var contents = "";
@@ -33,6 +33,6 @@
  			}
  		}
  		/* HTML element to be modified get new <p> tags */
- 		output.innerHTML = contents;
+ 		document.getElementById("messages").innerHTML = contents;
  }
 
