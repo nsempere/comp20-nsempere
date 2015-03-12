@@ -1,5 +1,5 @@
 /* Your CSS here... */
-<link href='http://fonts.googleapis.com/css?family=Oswald|Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+@import url(http://fonts.googleapis.com/css?family=Oswald|Open+Sans+Condensed:300);
 
 h1 {
 
