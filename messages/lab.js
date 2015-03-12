@@ -7,14 +7,11 @@
 
  function parse() {
 
- 		//var infoFeed = document.getElementById('messages');
-
  		request = new XMLHttpRequest();
- 		request.open("GET", "data.json", true);
+ 		request.open("GET", "http://messagehub.herokuapp.com/messages.json", true);
  		request.onreadystatechange = post_data;
+
  		request.send();
-
-
  }
 
  function post_data() 
@@ -29,7 +26,7 @@
 
  			/* creates a new <p> element for every element in the JSON-parsed array of objects */
  			for (var i = 0; i < data.length; i++) {
- 				contents += "<p>" + data[i].content + " " + data[i].username + "</p>";
+ 				contents += "<p class = 'json_elem'>" + data[i].content + " " + data[i].username + "</p>";
  			}
  		}
  		/* HTML element to be modified get new <p> tags */

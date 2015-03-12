@@ -1,1 +1,14 @@
 /* Your CSS here... */
+<link href='http://fonts.googleapis.com/css?family=Oswald|Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+h1 {
+
+	font-family: Oswald;
+	font-size: 36px;
+}
+
+.json_elems {
+
+	font-family: Open+Sans+Condensed;
+	font-size: 16px;
+}
