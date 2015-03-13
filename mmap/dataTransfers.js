@@ -6,47 +6,58 @@
  */
 
 
-var login = "nsempere"; //FIND THE ONE THAT MING SENT YOU
+login = "KendallRumfelt";
 
-function fetchCoords(position) 
-{
-		var pos = "login=" + login + 
-			      "&lat=" + position.coords.latitude + 
-			      "&lng" + position.coords.longitude;
-		document.getElementById("test").innerHTML = "<p>" + pos + "</p>";
-}
-
-function err(position)
-{
-
-	obj = document.getElementById("test")
-	obj.innerHTML = "<p> Mischief managed! We couldn't find your position <p>";
-}
 
 function findMyLocation()
 {
 		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(fetchCoords, err);
+				navigator.geolocation.getCurrentPosition(fetchCoords, err);
+				return position;
 		}
 		else {
-			document.getElementById("test").innerHTML = "<p> Geolocation is not supported </p>";
+				document.getElementById("test").innerHTML = "<p> Geolocation is not supported </p>";
 		}
 }
 
+/* Helper functions for findMyLocation() */
+		function fetchCoords(position) 
+		{
+				pos = "login=" + login + 
+				      "&lat=" + position.coords.latitude + 
+				      "&lng=" + position.coords.longitude;
+				document.getElementById("test").innerHTML = "<p>" + pos + "</p>";
+				sendMyLocation();
+		}
 
-/*function sendMyLocation()
+		function err(position)
+		{
+
+			var obj = document.getElementById("test");
+			obj.innerHTML = "<p> Mischief managed! We couldn't find your position <p>";
+		}
+
+function sendMyLocation()
 {
 
-	xml = new XMLHttpRequest();
+	request = new XMLHttpRequest();
 
-	xml.open("post", true);
+	request.open("post", position, true);
 
-	xml.send();
+	request.onreadystatechange = writeMap;
+	request.send();
+
 }
 
 function writeMap()
 {
-		sendMyLocation();
 
+		if (request.readyState == 4 && request.status == 200) {
+				peerLocations = JSON.parse(request.response);
+				document.getElementById("test").innerHTML = "<p>" + peerLocations + "</p>";
+		}
+		else {
+				document.getElementById("test").innerHTML = "<p> Failed to retrieve other positions </p>"
+		}
 
-}*/
+}
