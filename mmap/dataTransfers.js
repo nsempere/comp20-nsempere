@@ -5,10 +5,10 @@
  *
  */
 
-login = "KendallRumfelt";
-
-
-
+var login = "KendallRumfelt";
+var map;
+var marker;
+var info = new google.maps.InfoWindow();
 
 function findMyLocation()
 {
@@ -16,7 +16,7 @@ function findMyLocation()
 				navigator.geolocation.getCurrentPosition(fetchCoords, err);
 		}
 		else {
-				document.getElementById("test").innerHTML = "<p> Geolocation is not supported </p>";
+				document.getElementById("mapCanvas").innerHTML = "<p> Geolocation is not supported </p>";
 		}
 }
 
@@ -24,8 +24,8 @@ function findMyLocation()
 function err(position)
 {
 
-		var obj = document.getElementById("test");
-		obj.innerHTML = "<p class = otherFeedBack> Mischief managed! We couldn't find your position </p>";
+		var obj = document.getElementById("mapCanvas");
+		obj.innerHTML = "<p class = 'otherFeedBack'> We couldn't find your position </p>";
 }
 
 function fetchCoords(position) 
@@ -41,7 +41,7 @@ function fetchCoords(position)
 function mapMyself(lat, lng)
 {
 
-	console.log("First time calling google API stuff");
+		console.log(lat + "  " + lng);
 		myPos = new google.maps.LatLng(lat, lng);
 		console.log("passed first call");
 		ISolemnlySwearIAmUpToNoGood(myPos);
@@ -52,13 +52,14 @@ function ISolemnlySwearIAmUpToNoGood(myPos)
 {
 
 
-	var myDetails = {
-						zoom: 8,
-						center: myPos,
-						mapTypeId: google.maps.MapTypeId.ROADMAP
-					};
+	myDetails = {
+					zoom: 8,
+					center: myPos,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
 
 	map = new google.maps.Map(document.getElementById("mapCanvas"), myDetails);
+	
 	console.log("passed map initialization");
 }
 
@@ -85,6 +86,3 @@ function parseLocationFeedback()
 		}
 
 }
-
-
-
