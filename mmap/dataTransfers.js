@@ -41,7 +41,8 @@ function sendMyLocation(position)
 
 	request = new XMLHttpRequest();
 
-	request.open("post", position, true);
+	request.open("POST", position, true);
+	request.setRequestHeader("content-type", "application/x-www-form-urlencoded");
 
 	request.onreadystatechange = writeMap;
 	request.send();
@@ -50,13 +51,12 @@ function sendMyLocation(position)
 
 function writeMap()
 {
-
-		if (request.readyState == 4 && request.status == 200) {
+		if 	(request.readyState == 4 &&	request.status == 200) {
 				peerLocations = JSON.parse(request.response);
 				document.getElementById("test").innerHTML = "<p>" + peerLocations + "</p>";
 		}
 		else {
-				document.getElementById("test").innerHTML = "<p> Failed to retrieve other positions </p>"
+				document.getElementById("test").innerHTML = "<p> Failed to retrieve other positions </p>";
 		}
 
 }
