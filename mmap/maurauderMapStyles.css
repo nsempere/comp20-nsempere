@@ -10,7 +10,7 @@
 html {
 
 	height: 100%;
-
+	width: 100%;
 }
 
 
@@ -25,8 +25,9 @@ html {
 
 
 .oldMap {
-	
+
 		height: 100%;
+		width:; 100%;
 		background-color: #FAEBD7;
 }
 .otherFeedBack {
