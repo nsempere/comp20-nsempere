@@ -8,7 +8,6 @@
 
 var login = "KendallRumfelt";
 var map;
-var marker;
 
 function findMyLocation()
 {
@@ -43,7 +42,6 @@ function fetchCoords(position)
 function mapMyself(lat, lng)
 {
 
-		console.log(lat + "   " + lng);
 		myPos = new google.maps.LatLng(lat, lng);
 		ISolemnlySwearIAmUpToNoGood(myPos);
 }
@@ -55,7 +53,6 @@ function ISolemnlySwearIAmUpToNoGood(myPos)
 
 	document.getElementById("magic").innerHTML = "The Real Maurauder's Maps";
 
-	console.log(myPos);
 	myDetails = {
 					zoom: 8,
 					center: myPos,
@@ -64,7 +61,7 @@ function ISolemnlySwearIAmUpToNoGood(myPos)
 
 	map = new google.maps.Map(document.getElementById("mapCanvas"), myDetails);
 
-	marker = new google.maps.Marker({ position: myPos, title: login});
+	var marker = new google.maps.Marker({ position: myPos, title: login, icon: "legend-of-zelda.png"});
 	marker.setMap(map);
 	google.maps.event.addListener(marker, 'click', function(){
 
@@ -72,9 +69,6 @@ function ISolemnlySwearIAmUpToNoGood(myPos)
 			myInfoWindow.setContent(marker.title);
 			myInfoWindow.open(map, marker);
 	});
-
-	
-	console.log("passed map initialization");
 }
 
 
@@ -97,7 +91,6 @@ function parseLocationFeedback()
 {
 		if 	(request.readyState == 4 &&	request.status == 200) {
 				var peers = JSON.parse(request.response);
-				console.log(peers);
 				displayOtherUsers(peers);
 		}
 
@@ -120,6 +113,6 @@ function displayOtherUsers(peers)
 				google.maps.event.addListener(peerMarker, 'click', function(){
 						var peerInfoWindow = new google.maps.InfoWindow();
 						peerInfoWindow.setContent(peerMarker.title);
-						peerInfoWindow.open(map, marker);
+						peerInfoWindow.open(map, peerMarker);
 					});
 		}
