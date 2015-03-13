@@ -23,7 +23,6 @@ function findMyLocation()
 				pos = "login=" + login + 
 				      "&lat=" + position.coords.latitude + 
 				      "&lng=" + position.coords.longitude;
-				//document.getElementById("test").innerHTML = "<p>" + pos + "</p>";
 				sendMyLocation(pos);
 		}
 
