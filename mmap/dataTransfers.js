@@ -41,10 +41,10 @@ function sendMyLocation(position)
 
 	request = new XMLHttpRequest();
 
-	request.open("POST", position, true);
 	request.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-
+	request.open("POST", position, true);
 	request.onreadystatechange = writeMap;
+
 	request.send();
 
 }
