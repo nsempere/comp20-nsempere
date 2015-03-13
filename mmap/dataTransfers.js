@@ -9,7 +9,6 @@
 var login = "KendallRumfelt";
 var map;
 var marker;
-var myInfoWindow = new google.maps.InfoWindow();
 
 function findMyLocation()
 {
@@ -54,7 +53,7 @@ function ISolemnlySwearIAmUpToNoGood(myPos)
 {
 
 
-	document.getElementById("magic").innerHTML = "The real Maurauder's Maps";
+	document.getElementById("magic").innerHTML = "The Real Maurauder's Maps";
 
 	console.log(myPos);
 	myDetails = {
@@ -69,6 +68,7 @@ function ISolemnlySwearIAmUpToNoGood(myPos)
 	marker.setMap(map);
 	google.maps.event.addListener(marker, 'click', function(){
 
+			var myInfoWindow = new google.maps.InfoWindow();
 			myInfoWindow.setContent(marker.title);
 			myInfoWindow.open(map, marker);
 	});
@@ -97,6 +97,7 @@ function parseLocationFeedback()
 {
 		if 	(request.readyState == 4 &&	request.status == 200) {
 				var peers = JSON.parse(request.response);
+				console.log(peers);
 				displayOtherUsers(peers);
 		}
 
@@ -106,8 +107,19 @@ function displayOtherUsers(peers)
 {
 
 		for (var i = 0; i < peers.length; i++) {
-		 		var peerPosition = new google.maps.LatLng(peers[i].lat, peers[i].lng);
-		 		var peerMarker = new google.maps.Marker({position: peerPosition, title: peers[i].login});
-		 		peerMarker.setMap(map);
-		};
+				addMarker(peers[i]);
+		}
 }
+
+		function addMarker(peer)
+		{
+				var pos = new google.maps.LatLng(peer.lat, peer.lng);
+				var peerMarker = new google.maps.Marker({position: pos, title: peer.login});
+				peerMarker.setMap(map);
+
+				google.maps.event.addListener(peerMarker, 'click', function(){
+						var peerInfoWindow = new google.maps.InfoWindow();
+						peerInfoWindow.setContent(peerMarker.title);
+						peerInfoWindow.open(map, marker);
+					});
+		}
