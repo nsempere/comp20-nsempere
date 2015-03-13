@@ -40,12 +40,12 @@ function sendMyLocation(position)
 {
 
 	request = new XMLHttpRequest();
-
-	request.open("POST", position, true);
-	request.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+	var URI = "https://secret-about-box.herokuapp.com/sendLocation"
+	request.open("POST", URI, true);
+	request.setRequestHeader("content_type", "application/x-www-form-urlencoded");
 	request.onreadystatechange = writeMap;
 
-	request.send();
+	request.send(position);
 
 }
 
