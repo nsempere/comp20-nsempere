@@ -66,7 +66,7 @@ function ISolemnlySwearIAmUpToNoGood(myPos)
 
 	marker = new google.maps.Marker({ position: myPos, title: login});
 	marker.setMap(map);
-	google.maps.event.addListener(marker, 'click', function {
+	google.maps.event.addListener(marker, 'click', function(){
 			myInfoWindow.setContent(marker.title);
 			myInfoWindow.open(map, marker);
 	});
