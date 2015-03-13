@@ -9,7 +9,7 @@
 var login = "KendallRumfelt";
 var map;
 var marker;
-var info = new google.maps.InfoWindow();
+//var info = new google.maps.InfoWindow();
 
 function findMyLocation()
 {
@@ -63,6 +63,9 @@ function ISolemnlySwearIAmUpToNoGood(myPos)
 				};
 
 	map = new google.maps.Map(document.getElementById("mapCanvas"), myDetails);
+
+	marker = new google.maps.Marker({ position: myPos, title: login});
+	marker.setMap(map);
 	
 	console.log("passed map initialization");
 }
