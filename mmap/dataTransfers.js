@@ -13,7 +13,6 @@ function findMyLocation()
 {
 		if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(fetchCoords, err);
-				return position;
 		}
 		else {
 				document.getElementById("test").innerHTML = "<p> Geolocation is not supported </p>";
@@ -27,7 +26,7 @@ function findMyLocation()
 				      "&lat=" + position.coords.latitude + 
 				      "&lng=" + position.coords.longitude;
 				document.getElementById("test").innerHTML = "<p>" + pos + "</p>";
-				sendMyLocation();
+				sendMyLocation(position);
 		}
 
 		function err(position)
@@ -37,7 +36,7 @@ function findMyLocation()
 			obj.innerHTML = "<p> Mischief managed! We couldn't find your position <p>";
 		}
 
-function sendMyLocation()
+function sendMyLocation(position)
 {
 
 	request = new XMLHttpRequest();
