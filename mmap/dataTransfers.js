@@ -33,7 +33,7 @@ function fetchCoords(position)
 		pos = "login=" + login + 
 		      "&lat=" + position.coords.latitude + 
 		      "&lng=" + position.coords.longitude;
-		mapMyself(positions.coords.latitude, position.coords.longitude);
+		mapMyself(position.coords.latitude, position.coords.longitude);
 		sendMyLocation(pos);
 }
 
@@ -51,7 +51,7 @@ function ISolemnlySwearIAmUpToNoGood() {
 						center: myPos,
 						mapTypeId: google.maps.MapTypeId.ROADMAP
 					};
-					
+
 	map = new google.maps.Map(document.getElementById("mapCanvas"), myDetails)
 }
 
