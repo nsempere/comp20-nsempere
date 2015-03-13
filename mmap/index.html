@@ -9,7 +9,10 @@
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true&amp;libraries=places"></script>
 <script type="text/JavaScript">
 
-login = "KendallRumfelt";
+var login = "KendallRumfelt";
+var map;
+var marker;
+var info = new google.maps.InfoWindow();
 
 function findMyLocation()
 {
@@ -42,7 +45,7 @@ function fetchCoords(position)
 function mapMyself(lat, lng)
 {
 
-	console.log("First time calling google API stuff");
+		console.log(lat + "  " + lng);
 		myPos = new google.maps.LatLng(lat, lng);
 		console.log("passed first call");
 		ISolemnlySwearIAmUpToNoGood(myPos);
@@ -60,6 +63,7 @@ function ISolemnlySwearIAmUpToNoGood(myPos)
 				};
 
 	map = new google.maps.Map(document.getElementById("mapCanvas"), myDetails);
+	
 	console.log("passed map initialization");
 }
 
