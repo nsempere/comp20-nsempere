@@ -41,12 +41,12 @@ function fetchCoords(position)
 function mapMyself(lat, lng) {
 
 	console.log("First time calling google API stuff");
-		myPos = google.maps.LatLng(lat, lng);
+		myPos = new google.maps.LatLng(lat, lng);
 		console.log("passed first call");
-		ISolemnlySwearIAmUpToNoGood();
+		ISolemnlySwearIAmUpToNoGood(myPos);
 }
 
-function ISolemnlySwearIAmUpToNoGood() {
+function ISolemnlySwearIAmUpToNoGood(myPos) {
 
 
 	var myDetails = {
@@ -56,7 +56,7 @@ function ISolemnlySwearIAmUpToNoGood() {
 					};
 
 	map = new google.maps.Map(document.getElementById("mapCanvas"), myDetails);
-	console.log("passed map initialization");
+	console.log("passed map initialization");s
 }
 
 function sendMyLocation(position)
