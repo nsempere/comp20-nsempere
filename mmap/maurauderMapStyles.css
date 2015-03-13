@@ -5,13 +5,27 @@
  *
  */
 
+@import url(http://fonts.googleapis.com/css?family=La+Belle+Aurore);
+@import url(http://fonts.googleapis.com/css?family=Rock+Salt);
 
 #mapCavas {
 
-	height: 500px;
-	width: 500px;
+	height: 100%;
+	width: 100%;
 	margin: 0px;
 	padding: 0px;
 	
+}
+
+.oldMap {
+
+		background-color: #FAEBD7;
+}
+.otherFeedBack {
+
+		font-family: "Rock Salt";
+		font-size: 32px;
+		color: #AB4513;
+
 }
 

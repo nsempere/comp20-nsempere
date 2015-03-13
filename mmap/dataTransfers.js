@@ -8,7 +8,7 @@
 login = "KendallRumfelt";
 
 
-/* Had to make the reference. This function initilaizes a map object and displays it on the page. */
+
 
 function findMyLocation()
 {
@@ -24,8 +24,8 @@ function findMyLocation()
 function err(position)
 {
 
-	var obj = document.getElementById("test");
-	obj.innerHTML = "<p> Mischief managed! We couldn't find your position <p>";
+		var obj = document.getElementById("test");
+		obj.innerHTML = "<p class = otherFeedBack> Mischief managed! We couldn't find your position </p>";
 }
 
 function fetchCoords(position) 
@@ -38,7 +38,8 @@ function fetchCoords(position)
 }
 
 
-function mapMyself(lat, lng) {
+function mapMyself(lat, lng)
+{
 
 	console.log("First time calling google API stuff");
 		myPos = new google.maps.LatLng(lat, lng);
@@ -46,7 +47,9 @@ function mapMyself(lat, lng) {
 		ISolemnlySwearIAmUpToNoGood(myPos);
 }
 
-function ISolemnlySwearIAmUpToNoGood(myPos) {
+/* Had to make the reference. This function initilaizes a map object and displays it on the page. */
+function ISolemnlySwearIAmUpToNoGood(myPos) 
+{
 
 
 	var myDetails = {
@@ -58,6 +61,7 @@ function ISolemnlySwearIAmUpToNoGood(myPos) {
 	map = new google.maps.Map(document.getElementById("mapCanvas"), myDetails);
 	console.log("passed map initialization");
 }
+
 
 function sendMyLocation(position)
 {
@@ -73,6 +77,7 @@ function sendMyLocation(position)
 
 }
 
+
 function parseLocationFeedback()
 {
 		if 	(request.readyState == 4 &&	request.status == 200) {
@@ -80,4 +85,6 @@ function parseLocationFeedback()
 		}
 
 }
+
+
 
