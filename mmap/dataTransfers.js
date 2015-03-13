@@ -40,11 +40,14 @@ function fetchCoords(position)
 
 function mapMyself(lat, lng) {
 
+	console.log("First time calling google API stuff");
 		myPos = google.maps.LatLng(lat, lng);
+		console.log("passed first call");
 		ISolemnlySwearIAmUpToNoGood();
 }
 
 function ISolemnlySwearIAmUpToNoGood() {
+
 
 	var myDetails = {
 						zoom: 8,
@@ -52,7 +55,8 @@ function ISolemnlySwearIAmUpToNoGood() {
 						mapTypeId: google.maps.MapTypeId.ROADMAP
 					};
 
-	map = new google.maps.Map(document.getElementById("mapCanvas"), myDetails)
+	map = new google.maps.Map(document.getElementById("mapCanvas"), myDetails);
+	console.log("passed map initialization");
 }
 
 function sendMyLocation(position)
@@ -73,8 +77,6 @@ function parseLocationFeedback()
 {
 		if 	(request.readyState == 4 &&	request.status == 200) {
 				peerLocations = JSON.parse(request.response);
-
-
 		}
 
 }
