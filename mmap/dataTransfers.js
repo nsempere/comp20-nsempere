@@ -21,6 +21,7 @@ function findMyLocation()
 		}
 }
 
+
 /* Helper functions for findMyLocation() */
 function err(position)
 {
@@ -67,6 +68,7 @@ function ISolemnlySwearIAmUpToNoGood(myPos)
 	marker = new google.maps.Marker({ position: myPos, title: login});
 	marker.setMap(map);
 	google.maps.event.addListener(marker, 'click', function(){
+
 			myInfoWindow.setContent(marker.title);
 			myInfoWindow.open(map, marker);
 	});
@@ -94,7 +96,18 @@ function sendMyLocation(position)
 function parseLocationFeedback()
 {
 		if 	(request.readyState == 4 &&	request.status == 200) {
-				peerLocations = JSON.parse(request.response);
+				var peers = JSON.parse(request.response);
+				displayOtherUsers(peers);
 		}
 
+}
+
+function displayOtherUsers(peers) 
+{
+
+		for (var i = 0; i < peers.length; i++) {
+		 		var peerPosition = new google.maps.LatLng(peers[i].lat, peers[i].lng);
+		 		var peerMarker = new google.maps.Marker({position: peerPosition, title: peers[i].login});
+		 		peerMarker.setMap(map);
+		};
 }
