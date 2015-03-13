@@ -26,7 +26,7 @@ function findMyLocation()
 				      "&lat=" + position.coords.latitude + 
 				      "&lng=" + position.coords.longitude;
 				document.getElementById("test").innerHTML = "<p>" + pos + "</p>";
-				sendMyLocation(position);
+				sendMyLocation(pos);
 		}
 
 		function err(position)
@@ -40,11 +40,12 @@ function sendMyLocation(position)
 {
 
 	request = new XMLHttpRequest();
-	var URI = "https://secret-about-box.herokuapp.com/sendLocation"
+	var URI = "http://secret-about-box.herokuapp.com/sendLocation"
 	request.open("POST", URI, true);
-	request.setRequestHeader("content_type", "application/x-www-form-urlencoded");
+	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	request.onreadystatechange = writeMap;
 
+	console.log(position);
 	request.send(position);
 
 }
@@ -53,7 +54,7 @@ function writeMap()
 {
 		if 	(request.readyState == 4 &&	request.status == 200) {
 				peerLocations = JSON.parse(request.response);
-				document.getElementById("test").innerHTML = "<p>" + peerLocations + "</p>";
+				console.log(peerLocations);
 		}
 		else {
 				document.getElementById("test").innerHTML = "<p> Failed to retrieve other positions </p>";
