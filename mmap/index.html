@@ -41,6 +41,7 @@ function fetchCoords(position)
 		pos = "login=" + login + 
 		      "&lat=" + position.coords.latitude + 
 		      "&lng=" + position.coords.longitude;
+
 		mapMyself(position.coords.latitude, position.coords.longitude);
 		sendMyLocation(pos);
 }
@@ -49,6 +50,7 @@ function fetchCoords(position)
 function mapMyself(lat, lng)
 {
 
+		console.log(lat + "   " + lng);
 		myPos = new google.maps.LatLng(lat, lng);
 		ISolemnlySwearIAmUpToNoGood(myPos);
 }
