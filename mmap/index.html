@@ -6,8 +6,12 @@
 	<meta charset = "utf-8" />
 	<link rel = "stylesheet" href = "maurauderMapStyles.css" type = "text/css" />
 	<!--<script src = "dataTransfers.js"></script>-->
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true&amp;libraries=places"></script>
-<script type="text/JavaScript">
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true&amp;libraries=places"></script>
+
+	<title> The New Maurauder's Map </title>
+
+	<script type = "text/javascript">
+
 
 var login = "KendallRumfelt";
 var map;
@@ -45,9 +49,7 @@ function fetchCoords(position)
 function mapMyself(lat, lng)
 {
 
-		console.log(lat + "  " + lng);
 		myPos = new google.maps.LatLng(lat, lng);
-		console.log("passed first call");
 		ISolemnlySwearIAmUpToNoGood(myPos);
 }
 
@@ -55,7 +57,7 @@ function mapMyself(lat, lng)
 function ISolemnlySwearIAmUpToNoGood(myPos) 
 {
 
-
+	console.log(myPos);
 	myDetails = {
 					zoom: 8,
 					center: myPos,
@@ -91,9 +93,7 @@ function parseLocationFeedback()
 
 }
 
-</script>
-
-	<title> The New Maurauder's Map </title>
+	</script>
 
 </head>
 

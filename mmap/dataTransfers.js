@@ -41,9 +41,7 @@ function fetchCoords(position)
 function mapMyself(lat, lng)
 {
 
-		console.log(lat + "  " + lng);
 		myPos = new google.maps.LatLng(lat, lng);
-		console.log("passed first call");
 		ISolemnlySwearIAmUpToNoGood(myPos);
 }
 
@@ -51,7 +49,7 @@ function mapMyself(lat, lng)
 function ISolemnlySwearIAmUpToNoGood(myPos) 
 {
 
-
+	console.log(myPos);
 	myDetails = {
 					zoom: 8,
 					center: myPos,
