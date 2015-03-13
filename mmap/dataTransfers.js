@@ -7,6 +7,9 @@
 
 login = "KendallRumfelt";
 
+
+/* Had to make the reference. This function initilaizes a map object and displays it on the page. */
+
 function findMyLocation()
 {
 		if (navigator.geolocation) {
@@ -18,20 +21,39 @@ function findMyLocation()
 }
 
 /* Helper functions for findMyLocation() */
-		function fetchCoords(position) 
-		{
-				pos = "login=" + login + 
-				      "&lat=" + position.coords.latitude + 
-				      "&lng=" + position.coords.longitude;
-				sendMyLocation(pos);
-		}
+function err(position)
+{
 
-		function err(position)
-		{
+	var obj = document.getElementById("test");
+	obj.innerHTML = "<p> Mischief managed! We couldn't find your position <p>";
+}
 
-			var obj = document.getElementById("test");
-			obj.innerHTML = "<p> Mischief managed! We couldn't find your position <p>";
-		}
+function fetchCoords(position) 
+{
+		pos = "login=" + login + 
+		      "&lat=" + position.coords.latitude + 
+		      "&lng=" + position.coords.longitude;
+		mapMyself(positions.coords.latitude, position.coords.longitude);
+		sendMyLocation(pos);
+}
+
+
+function mapMyself(lat, lng) {
+
+		myPos = google.maps.LatLng(lat, lng);
+		ISolemnlySwearIAmUpToNoGood();
+}
+
+function ISolemnlySwearIAmUpToNoGood() {
+
+	var myDetails = {
+						zoom: 8,
+						center: myPos,
+						mapTypeId: google.maps.MapTypeId.ROADMAP
+					};
+					
+	map = new google.maps.Map(document.getElementById("mapCanvas"), myDetails)
+}
 
 function sendMyLocation(position)
 {
@@ -52,6 +74,8 @@ function parseLocationFeedback()
 		if 	(request.readyState == 4 &&	request.status == 200) {
 				peerLocations = JSON.parse(request.response);
 
+
 		}
 
 }
+
