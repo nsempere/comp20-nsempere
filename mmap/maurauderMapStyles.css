@@ -4,9 +4,15 @@
  *	Date created: 9 March 2015
  *
  */
-
-@import url(http://fonts.googleapis.com/css?family=La+Belle+Aurore);
 @import url(http://fonts.googleapis.com/css?family=Rock+Salt);
+
+
+html {
+
+	height: 100%;
+
+}
+
 
 #mapCavas {
 
@@ -17,8 +23,10 @@
 	
 }
 
-.oldMap {
 
+.oldMap {
+	
+		height: 100%;
 		background-color: #FAEBD7;
 }
 .otherFeedBack {
