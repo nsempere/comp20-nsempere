@@ -56,7 +56,7 @@ function ISolemnlySwearIAmUpToNoGood(myPos) {
 					};
 
 	map = new google.maps.Map(document.getElementById("mapCanvas"), myDetails);
-	console.log("passed map initialization");s
+	console.log("passed map initialization");
 }
 
 function sendMyLocation(position)
