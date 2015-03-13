@@ -41,8 +41,8 @@ function sendMyLocation(position)
 
 	request = new XMLHttpRequest();
 
-	request.setRequestHeader("content-type", "application/x-www-form-urlencoded");
 	request.open("POST", position, true);
+	request.setRequestHeader("content-type", "application/x-www-form-urlencoded");
 	request.onreadystatechange = writeMap;
 
 	request.send();
