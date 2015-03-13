@@ -16,14 +16,24 @@ html {
 
 #mapCanvas {
 
-	height: 100%;
-	width: 100%;
+	height: 496px;
+	width: 800px;
 	margin: 0px;
 	padding: 0px;
+	margin-right: auto;
+	margin-left: auto;
+	
 	
 }
 
 
+#magic {
+
+		font-family: "Rock Salt";
+		font-size: 32px;
+		text-align: center;
+		
+}
 .oldMap {
 
 		height: 100%;
@@ -37,4 +47,5 @@ html {
 		color: #AB4513;
 
 }
+
 

@@ -5,6 +5,7 @@
  *
  */
 
+
 var login = "KendallRumfelt";
 var map;
 var marker;
@@ -33,6 +34,7 @@ function fetchCoords(position)
 		pos = "login=" + login + 
 		      "&lat=" + position.coords.latitude + 
 		      "&lng=" + position.coords.longitude;
+
 		mapMyself(position.coords.latitude, position.coords.longitude);
 		sendMyLocation(pos);
 }
@@ -41,6 +43,7 @@ function fetchCoords(position)
 function mapMyself(lat, lng)
 {
 
+		console.log(lat + "   " + lng);
 		myPos = new google.maps.LatLng(lat, lng);
 		ISolemnlySwearIAmUpToNoGood(myPos);
 }
@@ -48,6 +51,9 @@ function mapMyself(lat, lng)
 /* Had to make the reference. This function initilaizes a map object and displays it on the page. */
 function ISolemnlySwearIAmUpToNoGood(myPos) 
 {
+
+
+	document.getElementById("magic").innerHTML = "The real Maurauder's Maps";
 
 	console.log(myPos);
 	myDetails = {
