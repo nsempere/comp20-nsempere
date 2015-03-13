@@ -5,9 +5,7 @@
  *
  */
 
-
 login = "KendallRumfelt";
-
 
 function findMyLocation()
 {
@@ -25,7 +23,7 @@ function findMyLocation()
 				pos = "login=" + login + 
 				      "&lat=" + position.coords.latitude + 
 				      "&lng=" + position.coords.longitude;
-				document.getElementById("test").innerHTML = "<p>" + pos + "</p>";
+				//document.getElementById("test").innerHTML = "<p>" + pos + "</p>";
 				sendMyLocation(pos);
 		}
 
@@ -40,24 +38,21 @@ function sendMyLocation(position)
 {
 
 	request = new XMLHttpRequest();
-	var URI = "http://secret-about-box.herokuapp.com/sendLocation"
+	var URI = "http://secret-about-box.herokuapp.com/sendLocation";
+
 	request.open("POST", URI, true);
 	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	request.onreadystatechange = writeMap;
+	request.onreadystatechange = parseLocationFeedback;
 
-	console.log(position);
 	request.send(position);
 
 }
 
-function writeMap()
+function parseLocationFeedback()
 {
 		if 	(request.readyState == 4 &&	request.status == 200) {
 				peerLocations = JSON.parse(request.response);
-				console.log(peerLocations);
-		}
-		else {
-				document.getElementById("test").innerHTML = "<p> Failed to retrieve other positions </p>";
+
 		}
 
 }
