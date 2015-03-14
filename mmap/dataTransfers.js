@@ -123,20 +123,18 @@ function addMarker(peer)
 
 function haversine(peer)
 {
-		console.log(peer.lat + "  " + peer.lng)
 		var dlat = ((peer.lat - myPos.k) * ((Math.PI) / 180));
 		var dlon = ((peer.lng - myPos.D) * ((Math.PI) / 180));
 		var mylat = (myPos.k * (Math.PI/180));
 		var mylng = (myPos.D * (Math.PI/180));
 		var earthRadius = 6371;
 
-		var val1 = Math.pow(Math.sin(dlat/2), 2) + 
-				  (Math.pow(Math.sin((dlon/2), 2))) *
+		var val1 = Math.sin(dlat/2) * Math.sin(dlat/2)+ 
+				   Math.sin(dlon/2) * Math.sin(dlon/2) *
 				  (Math.cos(mylat) * Math.cos(mylng));
 
 		var arctan = Math.atan(Math.sqrt(val1), Math.sqrt(1 - val1)) * 2;
 		var distance = earthRadius * arctan;
-
 		return distance;
 
 }
