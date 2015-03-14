@@ -8,6 +8,7 @@
 
 var login = "KendallRumfelt";
 var map;
+var myPos;
 
 function findMyLocation()
 {
@@ -30,7 +31,7 @@ function err(position)
 
 function fetchCoords(position) 
 {
-		pos = "login=" + login + 
+		var pos = "login=" + login + 
 		      "&lat=" + position.coords.latitude + 
 		      "&lng=" + position.coords.longitude;
 
@@ -64,7 +65,7 @@ function ISolemnlySwearIAmUpToNoGood(myPos)
 	var marker = new google.maps.Marker({ position: myPos, title: login, icon: "legend-of-zelda.png"});
 	marker.setMap(map);
 	google.maps.event.addListener(marker, 'click', function(){
-
+ 
 			var myInfoWindow = new google.maps.InfoWindow();
 			myInfoWindow.setContent(marker.title);
 			myInfoWindow.open(map, marker);
@@ -104,15 +105,38 @@ function displayOtherUsers(peers)
 		}
 }
 
-		function addMarker(peer)
-		{
-				var pos = new google.maps.LatLng(peer.lat, peer.lng);
-				var peerMarker = new google.maps.Marker({position: pos, title: peer.login});
-				peerMarker.setMap(map);
+function addMarker(peer)
+{
+		var pos = new google.maps.LatLng(peer.lat, peer.lng);
+		var peerMarker = new google.maps.Marker({position: pos, title: peer.login});
+		peerMarker.setMap(map);
 
-				google.maps.event.addListener(peerMarker, 'click', function(){
-						var peerInfoWindow = new google.maps.InfoWindow();
-						peerInfoWindow.setContent(peerMarker.title);
-						peerInfoWindow.open(map, peerMarker);
-					});
-		}
+		var distance = haversine(peer);
+
+		google.maps.event.addListener(peerMarker, 'click', function(){
+				var peerInfoWindow = new google.maps.InfoWindow();
+
+				peerInfoWindow.setContent("Name:   " + peerMarker.title + "  Distance from you:   " + distance);
+				peerInfoWindow.open(map, peerMarker);
+		});
+}
+
+function haversine(peer)
+{
+		console.log(peer.lat + "  " + peer.lng)
+		var dlat = ((peer.lat - myPos.k) * ((Math.PI) / 180));
+		var dlon = ((peer.lng - myPos.D) * ((Math.PI) / 180));
+		var mylat = (myPos.k * (Math.PI/180));
+		var mylng = (myPos.D * (Math.PI/180));
+		var earthRadius = 6371;
+
+		var val1 = Math.pow(Math.sin(dlat/2), 2) + 
+				  (Math.pow(Math.sin((dlon/2), 2))) *
+				  (Math.cos(mylat) * Math.cos(mylng));
+
+		var arctan = Math.atan(Math.sqrt(val1), Math.sqrt(1 - val1)) * 2;
+		var distance = earthRadius * arctan;
+
+		return distance;
+
+}
