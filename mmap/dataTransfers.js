@@ -116,7 +116,7 @@ function addMarker(peer)
 		google.maps.event.addListener(peerMarker, 'click', function(){
 				var peerInfoWindow = new google.maps.InfoWindow();
 
-				peerInfoWindow.setContent("Name:   " + peerMarker.title + "  Distance from you:   " + distance);
+				peerInfoWindow.setContent("Name:   " + peerMarker.title + "  Distance from you:   " + distance + " miles");
 				peerInfoWindow.open(map, peerMarker);
 		});
 }
@@ -127,7 +127,7 @@ function haversine(peer)
 		var dlon = ((peer.lng - myPos.D) * ((Math.PI) / 180));
 		var mylat = (myPos.k * (Math.PI/180));
 		var mylng = (myPos.D * (Math.PI/180));
-		var earthRadius = 6371;
+		var earthRadius = 3959; //Distance will now be returned in miles
 
 		var val1 = Math.sin(dlat/2) * Math.sin(dlat/2)+ 
 				   Math.sin(dlon/2) * Math.sin(dlon/2) *
