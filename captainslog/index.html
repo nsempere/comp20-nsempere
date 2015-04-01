@@ -10,17 +10,25 @@
 		$(document).ready( function(){
    		
 
+			for (key in localStorage) {
+				$("#log").prepend("<p>" + key + "  -  " + localStorage[key] + "</p>");
+			}
+			
    			$("#msg").change( function() {
 
    				var date = new Date();
-   			
+   				var dateString = date.getDay() + " " + date.toDateString(date.getMonth()) +  " " + date.getDate();
    				var entry = $("#msg").val();
-				$("#log").prepend("<p>" + date + "  " + entry + "</p>");
+
+				$("#log").prepend("<p>" + date + "  -  " + entry + "</p>");
+				$("#msg").val("");
+
+				localStorage.setItem(date, entry);
 			});
-   		//	var dateString = date.prototype.getDate();
-   		//	console.log(dateString);
-   				
+   
  		});
+
+ 		
 	</script>
 </head>
 
