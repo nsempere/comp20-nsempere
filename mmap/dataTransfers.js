@@ -77,8 +77,8 @@ function sendMyLocation(position)
 {
 
 	request = new XMLHttpRequest();
-	var URI = "http://secret-about-box.herokuapp.com/sendLocation";
-
+	//var URI = "http://secret-about-box.herokuapp.com/sendLocation";
+	var URI = " https://afternoon-lake-2860.herokuapp.com/sendLocation";
 	request.open("POST", URI, true);
 	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	request.onreadystatechange = parseLocationFeedback;
